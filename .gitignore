@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+out/
+*.wav
+*.log
+quantized/
+standard/*.onnx
+standard/*.onnx.data
+standard/tokenizer/
