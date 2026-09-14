@@ -4,11 +4,8 @@
 ### Compact and Efficient Text-to-Audio Generation for Low-Resource Deployment
 
 [![Project Page](https://img.shields.io/badge/Website-Project_Page-orange?logo=googlechrome&logoColor=white)](https://tinyaudio-project.github.io/)
-![Parameters](https://img.shields.io/badge/Parameters-87M-blue)
 ![Code](https://img.shields.io/badge/Code-Coming_Soon-lightgrey)
 ![Models](https://img.shields.io/badge/Models-Coming_Soon-lightgrey)
-
-**Compact text-to-audio generation with 87M parameters.**
 
 </div>
 
@@ -20,19 +17,12 @@ TinyAudio-MF extends the same architecture with MeanFlow training for one-step g
 
 > **Release status:** This repository currently hosts the project introduction. Source code, pretrained checkpoints, and runnable instructions are not yet available.
 
-## Highlights
+## Highlights- **Efficient architecture:** Single-stream text–audio modeling with layer-shared conditional modulation.
+- **Quality-aware training:** Supervised fine-tuning prioritizes perceptually strong and semantically consistent audio–text pairs.- **One-step generation:** TinyAudio-MF enables real-time CPU generation.
 
-- **Compact model:** 87M inference-time parameters, including the text encoder, generative backbone, waveform decoder, and lightweight projections.
-- **Efficient architecture:** Single-stream text–audio modeling and layer-shared conditional modulation reduce repeated parameters.
-- **Quality-aware training:** Supervised fine-tuning prioritizes perceptually strong and semantically consistent audio–text pairs.
-- **One-step generation:** TinyAudio-MF enables real-time CPU generation without increasing the model's parameter count.
-
-## Model Variants
-
-| Model | Inference-time parameters | Sampling | Audio sample rate | Release |
-| --- | --- | --- | --- | --- |
-| TinyAudio | 87M | 25-step Euler with CFG | 44.1 kHz | Coming soon |
-| TinyAudio-MF | 87M | One-step MeanFlow | 44.1 kHz | Coming soon |
+## Model Variants| Model | Sampling | Audio sample rate | Release || --- | --- | --- | --- |
+| TinyAudio | 25-step Euler with CFG | 44.1 kHz | Coming soon |
+| TinyAudio-MF | One-step MeanFlow | 44.1 kHz | Coming soon |
 
 ## Results
 
