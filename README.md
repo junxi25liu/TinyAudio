@@ -52,10 +52,3 @@ Training configurations, data-preparation instructions, and evaluation commands 
 ## Citation
 
 Paper link and BibTeX entry will be added when the manuscript is publicly available.
-
-## Related Projects
-
-- [MeanAudio](https://github.com/xiquan-li/MeanAudio): fast text-to-audio generation with Mean Flows.
-- [Resonate](https://github.com/xiquan-li/Resonate): text-to-audio generation with online feedback from large audio language models.
-
-The organization of this README follows these projects.
