@@ -1,13 +1,71 @@
+<div align="center">
+
 # TinyAudio
+### Compact and Efficient Text-to-Audio Generation for Low-Resource Deployment
 
-> Small model. Fast sound. Big ambition.
+[![Project Page](https://img.shields.io/badge/Website-Project_Page-orange?logo=googlechrome&logoColor=white)](https://tinyaudio-project.github.io/)
+![Parameters](https://img.shields.io/badge/Parameters-87M-blue)
+![Code](https://img.shields.io/badge/Code-Coming_Soon-lightgrey)
+![Models](https://img.shields.io/badge/Models-Coming_Soon-lightgrey)
 
-## Coming Soon
+**Compact text-to-audio generation with 87M parameters.**
 
-TinyAudio is under construction.
+</div>
 
-More details, code, models, and demos are on the way.
+## Overview
 
-<p align="center">
-  <i>coming soon...</i>
-</p>
+TinyAudio is a compact flow-matching model for text-to-audio generation on resource-constrained devices. It combines audio-aligned text conditioning, a single-stream generative Transformer, and a lightweight waveform decoder to generate 44.1 kHz audio with **87M inference-time parameters**.
+
+TinyAudio-MF extends the same architecture with MeanFlow training for one-step generation. It achieves a mean steady-state real-time factor (RTF) of **0.715** when generating 10-second audio under a four-core CPU quota.
+
+> **Release status:** This repository currently hosts the project introduction. Source code, pretrained checkpoints, and runnable instructions are not yet available.
+
+## Highlights
+
+- **Compact model:** 87M inference-time parameters, including the text encoder, generative backbone, waveform decoder, and lightweight projections.
+- **Efficient architecture:** Single-stream text–audio modeling and layer-shared conditional modulation reduce repeated parameters.
+- **Quality-aware training:** Supervised fine-tuning prioritizes perceptually strong and semantically consistent audio–text pairs.
+- **One-step generation:** TinyAudio-MF enables real-time CPU generation without increasing the model's parameter count.
+
+## Model Variants
+
+| Model | Inference-time parameters | Sampling | Audio sample rate | Release |
+| --- | --- | --- | --- | --- |
+| TinyAudio | 87M | 25-step Euler with CFG | 44.1 kHz | Coming soon |
+| TinyAudio-MF | 87M | One-step MeanFlow | 44.1 kHz | Coming soon |
+
+## Results
+
+AudioCaps generation results reported in the manuscript:
+
+| Model | FAD ↓ | FD ↓ | KL ↓ | IS ↑ |
+| --- | --- | --- | --- | --- |
+| TinyAudio | 2.65 | 18.24 | 1.32 | 10.44 |
+| TinyAudio-MF | 2.83 | 23.65 | 1.49 | 8.47 |
+
+TinyAudio uses 0.48 GB peak GPU memory in FP32 at batch size 1. The CPU result above was measured on a dual-socket Intel Xeon Gold 6530 node with a CPU quota equivalent to four cores, using FP32 and batch size 1. Timing includes text encoding and waveform decoding, but excludes model loading and audio saving.
+
+## Environmental Setup
+
+Coming soon. Tested dependencies and installation instructions will accompany the code release.
+
+## Quick Start
+
+Coming soon. Inference examples and checkpoint download links will be added when the models are released.
+
+Project website: [tinyaudio-project.github.io](https://tinyaudio-project.github.io/).
+
+## Training and Evaluation
+
+Training configurations, data-preparation instructions, and evaluation commands are being prepared for release.
+
+## Citation
+
+Paper link and BibTeX entry will be added when the manuscript is publicly available.
+
+## Related Projects
+
+- [MeanAudio](https://github.com/xiquan-li/MeanAudio): fast text-to-audio generation with Mean Flows.
+- [Resonate](https://github.com/xiquan-li/Resonate): text-to-audio generation with online feedback from large audio language models.
+
+The organization of this README follows these projects.
