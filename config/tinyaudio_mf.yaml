@@ -1,0 +1,20 @@
+# TinyAudio-MF: MeanFlow variant (1-step sampling by default)
+defaults:
+  - base_config
+  - train_common
+  - _self_
+
+model: tinyaudio_mf
+use_meanflow: true
+cfg_strength: 7
+learning_rate: 5.0e-5
+
+meanflow:
+  flexible_cfg: true          # sample the guidance scale during training
+  cfg_scale_max: 12.0
+  cfg_scale_beta: -0.25
+  shift_enabled: true         # time shift used when sampling (t, r) during training
+  shift: 2.0
+  flexible_cfg_tokens: true   # guidance-condition tokens (omega, CFG interval); used by the released model
+  num_cfg_tokens: 4
+  num_interval_tokens: 2

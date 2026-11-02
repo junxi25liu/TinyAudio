@@ -1,0 +1,10 @@
+# TinyAudio: flow-matching variant (25-step Euler sampling by default)
+defaults:
+  - base_config
+  - train_common
+  - _self_
+
+model: tinyaudio
+use_meanflow: false
+cfg_strength: 9
+learning_rate: 1.0e-5

@@ -1,0 +1,21 @@
+# shared training hyper-parameters (included by tinyaudio.yaml / tinyaudio_mf.yaml)
+batch_size: 128          # global batch size
+eval_batch_size: 4
+num_iterations: 200_000
+learning_rate: 1.0e-5
+linear_warmup_steps: 1_000
+lr_schedule: step
+lr_schedule_steps: [160_000, 180_000]
+lr_schedule_gamma: 0.1
+clip_grad_norm: 1.0
+weight_decay: 1.0e-6
+enable_grad_scaler: true
+
+log_text_interval: 100
+log_extra_interval: 20_000
+val_interval: 10_000
+eval_interval: 10_000
+save_eval_interval: 10_000
+save_weights_interval: 10_000
+save_checkpoint_interval: 10_000
+save_copy_iterations: []

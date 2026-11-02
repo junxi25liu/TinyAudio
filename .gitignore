@@ -1,3 +1,34 @@
-*
-!.gitignore
-!README.md
+# experiments / outputs
+exps/
+output/
+out/
+log/
+runs/
+data/*
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# tools
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+
+# generated audio
+*.wav
+*.flac
+
+# checkpoints (download from https://huggingface.co/junxiliu/TinyAudio)
+weights/
+cpu/standard/*.onnx
+.cache/

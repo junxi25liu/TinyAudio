@@ -1,0 +1,31 @@
+# Training mixture. Each `meta` file is a JSONL with one record per clip:
+#   {"audio_id": "clip_0001", "audio_path": "/path/to/clip.wav", "caption": "...", "duration": 9.8}
+# `caption` may also be a list of strings; each caption becomes a separate training sample.
+# `weight` controls the sampling ratio between datasets.
+datasets:
+  - name: AudioCaps
+    weight: 5
+    meta: [./data/audiocaps_train.jsonl]
+  - name: Clotho
+    weight: 5
+    meta: [./data/clotho_train.jsonl]
+  - name: WavCaps
+    weight: 1
+    meta: [./data/wavcaps.jsonl]
+  - name: AudioSet
+    weight: 1
+    meta: [./data/audioset.jsonl]
+  - name: VGGSound
+    weight: 1
+    meta: [./data/vggsound.jsonl]
+  - name: MusicCaps
+    weight: 5
+    meta: [./data/musiccaps.jsonl]
+
+# evaluation split (AudioCaps test). JSONL lines: {"id": "...", "caption": "..."}
+# gt_cache: features of the reference audio extracted with av-benchmark (needed for metrics only)
+AudioCaps_test:
+  tag: test
+  jsonl: ./data/audiocaps_test.jsonl
+  output_subdir: audiocaps_test
+  gt_cache: null

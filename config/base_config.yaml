@@ -1,0 +1,75 @@
+defaults:
+  - data: tinyaudio_mix
+  - override hydra/job_logging: custom-simplest
+  - _self_
+
+hydra:
+  run:
+    dir: ./exps/${exp_id}
+  output_subdir: ${now:%Y-%m-%d_%H-%M-%S}-hydra
+
+## model
+model: tinyaudio
+use_rope: true
+use_learned_text_pad_token: true
+
+exp_id: default
+debug: false
+cudnn_benchmark: true
+compile: false
+amp: true
+weights: null      # initialise the network from these weights (e.g. for fine-tuning)
+checkpoint: null   # resume training from this checkpoint
+
+seed: 14159265
+num_workers: 10    # per GPU
+pin_memory: true
+prefetch_factor: 4
+
+# text features produced by TA-CLAP (Ettin-32M aligned with audio)
+data_dim:
+  text_seq_len: 77
+text_dim: 384
+text_c_dim: 384
+
+# EMA
+ema:
+  enable: false
+  sigma_rels: [0.05, 0.1]
+  update_every: 1
+  checkpoint_every: 10_000
+  checkpoint_folder: ${hydra:run.dir}/ema_ckpts
+  default_output_sigma: 0.05
+  start: 0
+
+# sampling (flow matching)
+sampling:
+  mean: 0.0
+  scale: 1.0
+  min_sigma: 0.0
+  method: euler
+  num_steps: 25
+  shift: 2.0
+
+# classifier-free guidance
+null_condition_probability: 0.1
+cfg_strength: 7
+
+# audio
+audio_sample_rate: 44100
+audio_max_length: 10
+
+# external modules
+text_encoder_path: ./models/ettin-encoder-32m          # tokenizer + config of Ettin-32M
+text_encoder_ckpt: ./weights/ta_clap_ettin32m.pt       # TA-CLAP text encoder weights
+text_encoder_attn_implementation: null
+vae_ckpt: ./weights/ta_vae                             # TA-VAE (64-dim, 44.1 kHz, hop 1024)
+vae_model_tag: latest
+vae_use_ema: true
+
+# latent normalisation statistics
+latent_mean: ./sets/latent_mean.pt
+latent_std: ./sets/latent_std.pt
+
+# evaluation
+eval_batch_size: 4

@@ -1,0 +1,22 @@
+{
+  "format_version": 2,
+  "model": "tinyaudio_mf",
+  "precision": "fp32",
+  "duration": 10.0,
+  "default_num_steps": 1,
+  "prompt_max_length": 77,
+  "audio_sample_rate": 44100,
+  "latent_seq_len": 431,
+  "latent_dim": 64,
+  "text_encoder": "ettin-encoder-32m (TA-CLAP)",
+  "tokenizer_dir": "tokenizer",
+  "artifacts": {
+    "text_encoder": "text_encoder.onnx",
+    "meanflow_step": "meanflow_step.onnx",
+    "vae_decode": "vae_decode.onnx"
+  },
+  "notes": [
+    "Exported with batch size 1, a fixed prompt length of 77 tokens and a fixed 10 s latent.",
+    "meanflow_step applies classifier-free guidance internally; vae_decode includes latent de-normalisation."
+  ]
+}

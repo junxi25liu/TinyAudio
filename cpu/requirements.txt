@@ -1,0 +1,4 @@
+numpy
+onnxruntime        # or onnxruntime-openvino for faster decoding on Intel CPUs
+transformers
+huggingface_hub>=0.34
