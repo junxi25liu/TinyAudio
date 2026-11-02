@@ -49,7 +49,8 @@ def resolve_model_dir(model_dir: str | Path | None = None, *, repo_id: str = HF_
     from huggingface_hub import snapshot_download
     from huggingface_hub.errors import LocalEntryNotFoundError
 
-    kwargs = dict(repo_id=repo_id, revision=revision, allow_patterns=[f"{HF_SUBFOLDER}/*"])
+    # Include the Hub configuration in real downloads for standard download statistics.
+    kwargs = dict(repo_id=repo_id, revision=revision, allow_patterns=["config.json", f"{HF_SUBFOLDER}/*"])
     try:
         model_dir = Path(snapshot_download(local_files_only=True, **kwargs)) / HF_SUBFOLDER
         if not _is_complete(model_dir):

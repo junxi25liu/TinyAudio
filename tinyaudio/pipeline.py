@@ -63,7 +63,8 @@ def resolve_checkpoint(path: Union[str, Path],
     from huggingface_hub.errors import LocalEntryNotFoundError
 
     rel = path.as_posix()
-    kwargs = dict(repo_id=repo_id, revision=revision, allow_patterns=[rel, f'{rel}/*'])
+    # Include the Hub configuration in real downloads for standard download statistics.
+    kwargs = dict(repo_id=repo_id, revision=revision, allow_patterns=['config.json', rel, f'{rel}/*'])
     try:
         root = snapshot_download(local_files_only=True, **kwargs)
         target = Path(root) / rel
